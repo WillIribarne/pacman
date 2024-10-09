@@ -1,5 +1,4 @@
 #include "sfml-utn-inspt.h"
-#include "window.hpp"
 #include "playerValues.hpp"
 
 void leer_eventos(RenderWindow &window);
