@@ -10,9 +10,9 @@ void playpacman(){
         leer_eventos(ventana);
         ventana.clear();
         generateMap();
-        ventana.draw(cir);
+        ventana.draw(pacmanito);
         ventana.display();
-        cir.move(diff);
+        pacmanito.move(diff);
     }
 }
 
