@@ -1,30 +1,9 @@
-#define pacman
 #include "sfml-utn-inspt.h"
-
-const unsigned int ANCHO_VENT = 1366;
-const unsigned int ALTO_VENT = 768;
-const unsigned int FRAMERATE = 60;
-const float velocidad = 3.f;
-Vector2f diff = {0,0};
-RenderWindow ventana = RenderWindow({ANCHO_VENT, ALTO_VENT}, "Unidad 1 - Taller de Videojuegos");
+#include "window.hpp"
+#include "playerValues.hpp"
 
 void leer_eventos(RenderWindow &window);
 void pause();
-
-void playpacman(){
-    ventana.setFramerateLimit(FRAMERATE);
-    CircleShape cir = CircleShape(25);
-
-    while (ventana.isOpen()) {
-        leer_eventos(ventana);
-        ventana.clear();
-        ventana.draw(cir);
-        ventana.display();
-        cir.move(diff);
-    }
-}
-
-//if key.pressed == A (si se apretó la a)
 
 void leer_eventos(RenderWindow &window){
     Event event = Event();
@@ -52,3 +31,6 @@ void leer_eventos(RenderWindow &window){
     }
 }
 
+void pause(){
+
+}
