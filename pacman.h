@@ -5,14 +5,15 @@ const unsigned int ANCHO_VENT = 1366;
 const unsigned int ALTO_VENT = 768;
 const unsigned int FRAMERATE = 60;
 const float velocidad = 3.f;
+Vector2f diff = {0,0};
 RenderWindow ventana = RenderWindow({ANCHO_VENT, ALTO_VENT}, "Unidad 1 - Taller de Videojuegos");
 
 void leer_eventos(RenderWindow &window);
+void pause();
 
 void playpacman(){
     ventana.setFramerateLimit(FRAMERATE);
     CircleShape cir = CircleShape(25);
-    Vector2f diff = {0,0};
 
     while (ventana.isOpen()) {
         leer_eventos(ventana);
@@ -20,17 +21,6 @@ void playpacman(){
         ventana.draw(cir);
         ventana.display();
         cir.move(diff);
-        if (lengthTracker >= 180){
-            if (diff.x < 0 && diff.y > 0){
-                diff.y = -velocidad;
-            } else if (diff.x < 0 && diff.y < 0){
-                diff.x = velocidad;
-            } else if (diff.x > 0 && diff.y < 0){
-                diff.y = velocidad;
-            } else {
-                diff.x = -velocidad;
-            }
-        }
     }
 }
 
@@ -43,17 +33,20 @@ void leer_eventos(RenderWindow &window){
             window.close();
         }
         if(event.type == Event::KeyPressed){
-            if (Event::KeyPressed == Keyboard::Left){
-
+            if (event.key.code == sf::Keyboard::Left){
+                diff = {-velocidad,0};
             }
-            if (Event::KeyPressed == Keyboard::Down){
-                
+            if (event.key.code == sf::Keyboard::Down){
+                diff = {0, velocidad};
             }
-            if (Event::KeyPressed == Keyboard::Up){
-                
+            if (event.key.code == sf::Keyboard::Up){
+                diff = {0, -velocidad};
             }
-            if (Event::KeyPressed == Keyboard::Right){
-                
+            if (event.key.code == sf::Keyboard::Right){
+                diff = {velocidad,0};
+            }
+            if (event.key.code == sf::Keyboard::P){
+                pause();
             }
         }
     }
