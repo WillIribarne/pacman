@@ -1,4 +1,5 @@
 #include "window.hpp"
+#include "pellets.hpp"
 
 const unsigned int ROWS = 31;
 const unsigned int COLUMNS = 28;
@@ -57,19 +58,24 @@ void generateMap(){
             } else if (mapSketch[i][k] == '|' || mapSketch[i][k] == '_'){
                 rec.setFillColor(Color(255, 0, 0)); //rojo
             }
-            ventana.draw(rec);
+            window.draw(rec);
             if (mapSketch[i][k] == '.'){
-                CircleShape pellet = CircleShape(5);
+                Pellet pellet = new Pellet (Color(255, 255, 255), 5f, i, k);
+                /*CircleShape pellet = CircleShape(5);
                 pellet.setFillColor(Color(255, 255, 255));
                 Vector2f pelletPos = currentTilePosition(i,k);
                 pellet.setPosition({pelletPos.x + (X_TILE_SIZE - pellet.getRadius() * 2) / 2, pelletPos.y + (Y_TILE_SIZE - pellet.getRadius() * 2) / 2});
-                ventana.draw(pellet);
+                */
+                window.draw(pellet);
             } else if (mapSketch[i][k] == 'o'){
+                PowerPellet powerpellet = new PowerPellet (Color(255, 255, 255), 12.5f, 7f, i, k);
+                /*
                 CircleShape powerpellet = CircleShape(12.5f);
                 powerpellet.setFillColor(Color(255, 255, 255));
                 Vector2f pelletPos = currentTilePosition(i,k);
                 powerpellet.setPosition({pelletPos.x + (X_TILE_SIZE - powerpellet.getRadius() * 2) / 2, pelletPos.y + (Y_TILE_SIZE - powerpellet.getRadius() * 2) / 2});
-                ventana.draw(powerpellet);
+                */
+                window.draw(powerpellet);
             }
             
         }

@@ -3,11 +3,12 @@
 class Pacman {
     private:
         CircleShape shape;
+        const float size = 20;
         float speed;
         Vector2f pacmanMove;
     public:
         Pacman(){
-            shape = CircleShape(20);
+            shape = CircleShape(size);
             speed = 3.f;
             pacmanMove = {0,0};
             setPacmanColor(Color(255, 242, 36));
@@ -20,6 +21,9 @@ class Pacman {
         }
         void setMovement(Vector2f vec){
             pacmanMove = vec;
+        }
+        float getSpeed(){
+            return speed;
         }
 };
 
