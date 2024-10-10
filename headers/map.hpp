@@ -7,7 +7,7 @@ float Y_TILE_SIZE = ALTO_VENT / ROWS;
 
 const char mapSketch[ROWS][COLUMNS + 1] = {
     "############################",
-    "#............##............#",
+    "#o...........##...........o#",
     "#.####.#####.##.#####.####.#",
     "#.####.#####.##.#####.####.#",
     "#.####.#####.##.#####.####.#",
@@ -35,12 +35,12 @@ const char mapSketch[ROWS][COLUMNS + 1] = {
     "#......##....##....##......#",
     "#.##########.##.##########.#",
     "#.##########.##.##########.#",
-    "#..........................#",
+    "#o........................o#",
     "############################",
 };
 
 Vector2f currentTilePosition(int i, int k){
-    return {((int) X_TILE_SIZE % COLUMNS / 2) + X_TILE_SIZE * k, ((int) Y_TILE_SIZE % ROWS / 2) + Y_TILE_SIZE * i};
+    return {X_TILE_SIZE * k, Y_TILE_SIZE * i};
 }
 
 
@@ -49,10 +49,9 @@ void generateMap(){
         for (int k = 0; k < COLUMNS; k++){
             RectangleShape rec = RectangleShape ({X_TILE_SIZE, Y_TILE_SIZE});
             rec.setPosition(currentTilePosition(i,k));
+            rec.setFillColor(Color(0, 0, 0)); //negro
             if (mapSketch[i][k] == '#'){
                 rec.setFillColor(Color(3, 15, 219)); //azul
-            } else if (mapSketch[i][k] == ' ' || mapSketch[i][k] == '.'){
-                rec.setFillColor(Color(0, 0, 0)); //negro
             } else if (mapSketch[i][k] == 'X'){
                 rec.setFillColor(Color(255, 227, 0)); //amarillo
             } else if (mapSketch[i][k] == '|' || mapSketch[i][k] == '_'){
@@ -60,12 +59,19 @@ void generateMap(){
             }
             ventana.draw(rec);
             if (mapSketch[i][k] == '.'){
-                    CircleShape pellet = CircleShape(5);
-                    pellet.setFillColor(Color(255, 255, 255));
-                    Vector2f pelletPos = currentTilePosition(i,k);
-                    pellet.setPosition({pelletPos.x + X_TILE_SIZE / 2.f - 5.f / 2.f, pelletPos.y + Y_TILE_SIZE / 2.f - 5.f / 2.f});
-                    ventana.draw(pellet);
-                }
+                CircleShape pellet = CircleShape(5);
+                pellet.setFillColor(Color(255, 255, 255));
+                Vector2f pelletPos = currentTilePosition(i,k);
+                pellet.setPosition({pelletPos.x + (X_TILE_SIZE - pellet.getRadius() * 2) / 2, pelletPos.y + (Y_TILE_SIZE - pellet.getRadius() * 2) / 2});
+                ventana.draw(pellet);
+            } else if (mapSketch[i][k] == 'o'){
+                CircleShape powerpellet = CircleShape(12.5f);
+                powerpellet.setFillColor(Color(255, 255, 255));
+                Vector2f pelletPos = currentTilePosition(i,k);
+                powerpellet.setPosition({pelletPos.x + (X_TILE_SIZE - powerpellet.getRadius() * 2) / 2, pelletPos.y + (Y_TILE_SIZE - powerpellet.getRadius() * 2) / 2});
+                ventana.draw(powerpellet);
+            }
+            
         }
     }
 }

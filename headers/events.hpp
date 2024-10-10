@@ -11,19 +11,19 @@ void leer_eventos(RenderWindow &window){
             window.close();
         }
         if(event.type == Event::KeyPressed){
-            if (event.key.code == sf::Keyboard::Left){
+            if (event.key.code == Keyboard::Left){
                 diff = {-velocidad,0};
             }
-            if (event.key.code == sf::Keyboard::Down){
+            if (event.key.code == Keyboard::Down){
                 diff = {0, velocidad};
             }
-            if (event.key.code == sf::Keyboard::Up){
+            if (event.key.code == Keyboard::Up){
                 diff = {0, -velocidad};
             }
-            if (event.key.code == sf::Keyboard::Right){
+            if (event.key.code == Keyboard::Right){
                 diff = {velocidad,0};
             }
-            if (event.key.code == sf::Keyboard::P){
+            if (event.key.code == Keyboard::P){
                 pause();
             }
         }
