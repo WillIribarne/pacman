@@ -7,7 +7,7 @@ void playpacman(){
     Pacman pacmanito;
 
     while (window.isOpen()) {
-        read_events(window, pacmanito);
+        read_events(window, &pacmanito);
         window.clear();
         generateMap();
         window.draw(pacmanito.getshape());
