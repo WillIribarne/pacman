@@ -1,10 +1,10 @@
 #include "sfml-utn-inspt.h"
 #include "playerValues.hpp"
 
-void leer_eventos(RenderWindow &window);
+void read_events(RenderWindow &window, Pacman &pacmanito);
 void pause();
 
-void leer_eventos(RenderWindow &window, Pacman &pacmanito){
+void read_events(RenderWindow &window, Pacman &pacmanito){
     Event event = Event();
     while (window.pollEvent(event)){
         if (event.type == Event::Closed){ //si el evento es 'X', cierra ventana

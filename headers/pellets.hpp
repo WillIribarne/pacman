@@ -1,5 +1,5 @@
 #include "sfml-utn-inspt.h"
-#include "map.hpp"
+#include "Constants.hpp"
 
 class Pellet {
     private:
@@ -32,12 +32,15 @@ class Pellet {
         void setSize(float s){
             size = s;
         }
+        CircleShape getshape(){
+            return shape;
+        }
 };
 
 class PowerPellet: public Pellet {
     private:
         float effectDuration;
     public:
-        PowerPellet(Color c, float s, float eD) : Pellet(c, s), effectDuration(eD) {}s     
+        PowerPellet(Color c, float s, float eD) : Pellet(c, s), effectDuration(eD) {}     
         PowerPellet(Color c, float s, float eD, int i, int k) : Pellet(c, s, i, k), effectDuration(eD) {}
 };

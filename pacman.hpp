@@ -4,15 +4,15 @@
 #include "headers/map.hpp"
 
 void playpacman(){
-    setWindow();
-    setPlayerValues();
-    while (ventana.isOpen()) {
-        leer_eventos(ventana);
-        ventana.clear();
+    Pacman pacmanito;
+
+    while (window.isOpen()) {
+        read_events(window, pacmanito);
+        window.clear();
         generateMap();
-        ventana.draw(pacmanito);
-        ventana.display();
-        pacmanito.move(diff);
+        window.draw(pacmanito.getshape());
+        window.display();
+        (pacmanito.getshape()).move(pacmanito.getMovementVec());
     }
 }
 
