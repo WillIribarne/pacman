@@ -4,15 +4,15 @@
 #include "headers/map.hpp"
 
 void playpacman(){
-    Pacman pacmanito;
-
+    pacmanito.setFillColor(Color(255, 251, 4));
+    window.setFramerateLimit(FRAMERATE);
     while (window.isOpen()) {
-        read_events(window, &pacmanito);
+        read_events(window);
         window.clear();
         generateMap();
-        window.draw(pacmanito.getshape());
+        window.draw(pacmanito);
         window.display();
-        (pacmanito.getshape()).move(pacmanito.getMovementVec());
+        (pacmanito).move(pacmanMove);
     }
 }
 
