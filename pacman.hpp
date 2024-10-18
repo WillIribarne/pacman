@@ -12,7 +12,7 @@ void playpacman(){
         generateMap();
         window.draw(pacmanito);
         window.display();
-        (pacmanito).move(pacmanMove);
+        pacmanito.move(pacmanMove);
     }
 }
 
